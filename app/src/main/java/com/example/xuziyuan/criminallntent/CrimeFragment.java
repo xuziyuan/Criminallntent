@@ -27,6 +27,8 @@ public class CrimeFragment extends Fragment {
     private CheckBox mSlovedCheckBox;
 
 
+
+
     public static CrimeFragment newInstance(UUID uuid){
         Bundle args = new Bundle();
         args.putSerializable(ARG_CRIME_ID,uuid);
