@@ -26,6 +26,8 @@ public class CrimeListFragment extends Fragment {
     private int mPostion;
     private boolean mSubtitleVisible;
 
+    private static final String SAVED_SUBTITLE_VISIBLE = "subtitle";
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,8 +41,19 @@ public class CrimeListFragment extends Fragment {
         mRecyclerView = (RecyclerView)view.findViewById(R.id.crime_recycler_view);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         getActivity();
+
+        if (savedInstanceState != null){
+            mSubtitleVisible = savedInstanceState.getBoolean(SAVED_SUBTITLE_VISIBLE);
+        }
+
         updateUI();
         return view;
+    }
+
+    @Override
+    public void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putSerializable(SAVED_SUBTITLE_VISIBLE,mSubtitleVisible);
     }
 
     @Override
